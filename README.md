@@ -21,7 +21,7 @@ OR
 
 "require": {
 	"laravel/framework": "5.0.*",
-	"lutforrahman/nujhatcart": "1.0.4"
+	"lutforrahman/nujhatcart": "1.0.0"
 }
 
 ```
