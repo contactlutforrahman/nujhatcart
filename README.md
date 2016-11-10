@@ -1,3 +1,13 @@
+[![Latest Stable Version](https://poser.pugx.org/lutforrahman/nujhatcart/v/stable)](https://packagist.org/packages/lutforrahman/nujhatcart)
+[![Total Downloads](https://poser.pugx.org/lutforrahman/nujhatcart/downloads)](https://packagist.org/packages/lutforrahman/nujhatcart)
+[![Latest Unstable Version](https://poser.pugx.org/lutforrahman/nujhatcart/v/unstable)](https://packagist.org/packages/lutforrahman/nujhatcart)
+[![License](https://poser.pugx.org/lutforrahman/nujhatcart/license)](https://packagist.org/packages/lutforrahman/nujhatcart)
+
+[![Monthly Downloads](https://poser.pugx.org/lutforrahman/nujhatcart/d/monthly)](https://packagist.org/packages/lutforrahman/nujhatcart)
+
+[![Daily Downloads](https://poser.pugx.org/lutforrahman/nujhatcart/d/daily)](https://packagist.org/packages/lutforrahman/nujhatcart)
+
+
 # Nujhatcart The Laravel Shoppingcart
 
 A simple shoppingcart implementation for Laravel >=5.
@@ -31,7 +41,7 @@ Next, run the Composer update command from the Terminal:
     composer update
 	
 	
-Now all you have to do is add the service provider of the package and alias the package. To do this open your `app/config/app.php` file.
+Now all you have to do is add the service provider of the package and alias the package. To do this open your `config/app.php` file.
 
 Add a new line to the `service providers` array:
 
@@ -91,7 +101,7 @@ $item = [
 	'price' => $product->price,
 	'discount' => $product->discount_amount,
 	'tax' => 0,
-	'options' => array('size' => 'XL', 'color' => 'Red')
+	'options' => array('size' => 'M', 'color' => 'White')
 ];
 Cart::insert($item);
 		
@@ -110,7 +120,7 @@ $item = [
 	'price' => $product->price,
 	'discount' => $product->discount_amount,
 	'tax' => 0,
-	'options' => array('size' => 'XL', 'color' => 'Red')
+	'options' => array('size' => 'M', 'color' => 'White')
 ];
 
 $product2 = Product::find($id2);
@@ -125,7 +135,7 @@ $item2 = [
 	'price' => $product2->price,
 	'discount' => $product2->discount_amount,
 	'tax' => 0,
-	'options' => array('size' => 'XL', 'color' => 'Red')
+	'options' => array('size' => 'M', 'color' => 'White')
 ];
 
 Cart::insert(array($item, $item2));
@@ -172,7 +182,7 @@ $item = [
 	'price' => $product->price,
 	'discount' => $product->discount_amount,
 	'tax' => 0,
-	'options' => array('size' => 'XL', 'color' => 'Red')
+	'options' => array('size' => 'M', 'color' => 'White')
 ];
 Cart::update($rowId, $item);
 	
@@ -188,7 +198,7 @@ Cart::update($rowId, $item);
 			'quantity' => 3,
 			'discount' => 9,
 			'tax' => 9.5,
-			'options' => array('size' => 'XL', 'color' => 'Red')
+			'options' => array('size' => 'M', 'color' => 'White')
 		];
 		Cart::update($rowId, $item);
 		
@@ -412,7 +422,7 @@ The Cart package will throw exceptions if something goes wrong. This way it's ea
 | *NujhatcartInvalidDiscountException*   	| When a non-numeric discount is passed                                                        |
 | *NujhatcartInvalidPriceException*	        | When a non-numeric price is passed                                                           |
 | *NujhatcartInvalidQuantityException*      | When a non-numeric quantity is passed                                                        |
-| *NujhatcartInvalidRowIDException*   		| When the `$rowId` that got passed doesn't exists in the current cart                         |
+| *NujhatcartInvalidItemIDException*   		| When the `$itemId` that got passed doesn't exists in the current cart                         |
 | *NujhatcartInvalidTaxException*   		| When a non-numeric tax is passed                                                             |
 | *NujhatcartUnknownModelException*	        | When an unknown model is associated to a cart row                                            |
 
@@ -496,9 +506,5 @@ The Cart package will throw exceptions if something goes wrong. This way it's ea
 ```
 
 ## Follow me
-   
-For further information and help : www.lutforrahman.com
 
 Follow me on twitter : https://twitter.com/social_lutfor
-
-Like my facebook page : https://www.facebook.com/dev.lutfor.rahman
