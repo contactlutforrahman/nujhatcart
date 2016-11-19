@@ -4,7 +4,7 @@
 	"type" : "package",
 	"keywords" : ["Nujhatcart", "Shoppingcart", "Laravel Shoppingcart", "eCommerce"],
     "require": {
-        "php": ">=5.4.0",
+        "php": ">=5.5.9",
         "illuminate/support": "~5.0"
     },
     "require-dev": {
