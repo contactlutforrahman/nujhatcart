@@ -10,7 +10,7 @@
  * Time: 1:30 PM
  */
 
-namespace Lutforrahman\iLaCart;
+namespace Lutforrahman\Nujhatcart;
 
 
 use Illuminate\Support\Collection;

@@ -472,7 +472,7 @@ class Cart
     {
         $cart = $this->getContent();
 
-        $newItem = new CartRowCollection([
+        $newItem = new CartItemCollection([
             'itemid' => $itemId,
             'id' => $id,
             'sku' => $sku,
@@ -484,11 +484,10 @@ class Cart
             'price' => $price,
             'discount' => $discount,
             'tax' => $tax,
-            'options' => new CartRowOptionsCollection($options),
+            'options' => new CartItemOptionsCollection($options),
             'total' => $quantity * $price  - ($quantity * $discount),
             'total_discount' => $quantity * $discount,
             'total_tax' => $quantity * $tax,
-            'total_discount' => $quantity * $discount,
             'subtotal' => ($quantity * $price) + ($quantity * $tax) - ($quantity * $discount),
         ], $this->associatedModel, $this->associatedModelNamespace);
 
@@ -510,7 +509,7 @@ class Cart
             return $this->remove($itemId);
         }
 
-        return $this->updateRow($itemId, ['quantity' => $quantity]);
+        return $this->updateItem($itemId, ['quantity' => $quantity]);
     }
 
     /**
