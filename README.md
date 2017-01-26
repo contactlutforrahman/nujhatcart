@@ -45,7 +45,7 @@ Now all you have to do is add the service provider of the package and alias the 
 
 Add a new line to the `service providers` array:
 
-	Lutforrahman\Nujhatcart\ShoppingcartServiceProvider::class
+	Lutforrahman\Nujhatcart\NujhatcartServiceProvider::class
 
 After that add a new line to the `aliases` array:
 
