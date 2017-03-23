@@ -76,7 +76,7 @@ class Cart
      */
     public function instance($instance = null)
     {
-        if (empty($instance)) throw new Exceptions\NujhatcartInstanceException;
+        if (empty($instance)) throw new NujhatcartInstanceException;
 
         $this->instance = $instance;
 
@@ -96,7 +96,7 @@ class Cart
         $this->associatedModel = $modelName;
         $this->associatedModelNamespace = $modelNamespace;
 
-        if (!class_exists($modelNamespace . '\\' . $modelName)) throw new Exceptions\NujhatcartUnknownModelException;
+        if (!class_exists($modelNamespace . '\\' . $modelName)) throw new NujhatcartUnknownModelException;
 
         // Return self so the method is chainable
         return $this;
@@ -182,7 +182,7 @@ class Cart
      */
     public function update($itemId, $attribute)
     {
-        if (!$this->hasItemId($itemId)) throw new Exceptions\NujhatcartInvalidItemIDException;
+        if (!$this->hasItemId($itemId)) throw new NujhatcartInvalidItemIDException;
 
         if (is_array($attribute)) {
             // Fire the cart.update event
@@ -215,7 +215,7 @@ class Cart
      */
     public function remove($itemId)
     {
-        if (!$this->hasRowId($itemId)) throw new Exceptions\NujhatcartInvalidItemIDException;
+        if (!$this->hasRowId($itemId)) throw new NujhatcartInvalidItemIDException;
 
         $cart = $this->getContent();
 
@@ -315,23 +315,23 @@ class Cart
     protected function insertItem($id, $sku, $name, $slug, $image, $description, $quantity, $price, $discount, $tax, array $options = [])
     {
         if (empty($id) || empty($name) || empty($quantity) || !isset($price)) {
-            throw new Exceptions\NujhatcartInvalidItemException;
+            throw new NujhatcartInvalidItemException;
         }
 
         if (!is_numeric($quantity)) {
-            throw new Exceptions\NujhatcartInvalidQuantityException;
+            throw new NujhatcartInvalidQuantityException;
         }
 
         if (!is_numeric($price)) {
-            throw new Exceptions\NujhatcartInvalidPriceException;
+            throw new NujhatcartInvalidPriceException;
         }
 
         if (!is_numeric($discount)) {
-            throw new Exceptions\NujhatcartInvalidDiscountException;
+            throw new NujhatcartInvalidDiscountException;
         }
 
         if (!is_numeric($tax)) {
-            throw new Exceptions\NujhatcartInvalidTaxException;
+            throw new NujhatcartInvalidTaxException;
         }
 
         $cart = $this->getContent();

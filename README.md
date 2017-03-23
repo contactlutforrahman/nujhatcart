@@ -30,8 +30,8 @@ OR
 ```php
 
 "require": {
-	"laravel/framework": "5.0.*",
-	"lutforrahman/nujhatcart": "1.0.2"
+	"laravel/framework": "5.3*",
+	"lutforrahman/nujhatcart": "5.3"
 }
 
 ```
@@ -83,11 +83,7 @@ The shoppingcart gives you the following methods to use:
      */
  
 
-// Basic form
-
-Cart::insert('101', '090-BRC', 'Product name', 'product-name', 'uploads/product-thumbnail.jpg', 1, 9.99, 0.00, 0.00, array('size' => 'large', 'color' => 'white'));
-
-// Array form
+// Cart Insert
 
 $product = Product::find($id);
 $item = [
