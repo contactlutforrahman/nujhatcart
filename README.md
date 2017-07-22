@@ -14,7 +14,7 @@ A simple shoppingcart implementation for Laravel >=5.4
 
 ## Installation
 
-Install the package through [Composer](http://getcomposer.org/). Edit your project's `composer.json` file by adding:
+Install the package through [Composer](http://getcomposer.org/). Open your terminal in your project directory, wirte :
 
 
 ### Laravel 5.4
@@ -23,9 +23,11 @@ Install the package through [Composer](http://getcomposer.org/). Edit your proje
 composer require lutforrahman/nujhatcart
 
 ```
+Press enter and package will start downloading ...
 
 OR
 
+Edit your project's `composer.json` file and add :
 
 ```php
 
