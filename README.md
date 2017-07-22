@@ -47,7 +47,7 @@ Now all you have to do is add the service provider of the package and alias the 
 
 Add a new line to the `service providers` array:
 
-	Lutforrahman\Nujhatcart\ShoppingcartServiceProvider::class
+	Lutforrahman\Nujhatcart\NujhatcartServiceProvider::class
 
 After that add a new line to the `aliases` array:
 
@@ -83,13 +83,6 @@ The shoppingcart gives you the following methods to use:
      * @param float $tax Tax amount of one item
      * @param array $options Array of additional options, such as 'size' or 'color'
      */
- 
-
-// Basic form
-
-Cart::insert('101', '090-BRC', 'Product name', 'product-name', 'uploads/product-thumbnail.jpg', 1, 9.99, 0.00, 0.00, array('size' => 'large', 'color' => 'white'));
-
-// Array form
 
 $product = Product::find($id);
 $item = [
@@ -108,7 +101,7 @@ $item = [
 Cart::insert($item);
 		
 		
-// Batch method
+// Insert multiple arry()
 
 $product = Product::find($id);
 $item = [
