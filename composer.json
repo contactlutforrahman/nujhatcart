@@ -4,7 +4,7 @@
 	"type" : "package",
 	"keywords" : ["Nujhatcart", "Shoppingcart", "Laravel Shoppingcart", "eCommerce"],
     "require": {
-        "php": ">=5.5.9",
+        "php": ">=5.4.0",
         "illuminate/support": "~5.0"
     },
     "require-dev": {
@@ -15,6 +15,11 @@
     "license": "MIT",
     "authors": [
         {
+            "name": "Jubaer Ahmed",
+            "designation": "Creative Designer",
+            "email": "creativejubaer@gmail.com"
+        },
+		{
             "name": "Lutfor Rahman",
             "designation": "Project Manager & Lead Developer",
             "email": "contact.lutforrahman@gmail.com"

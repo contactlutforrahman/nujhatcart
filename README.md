@@ -10,14 +10,14 @@
 
 # Nujhatcart The Laravel Shoppingcart
 
-A simple shoppingcart implementation for Laravel >=5.
+A simple shoppingcart implementation for Laravel >=5.4
 
 ## Installation
 
 Install the package through [Composer](http://getcomposer.org/). Edit your project's `composer.json` file by adding:
 
 
-### Laravel 5
+### Laravel 5.4
 
 ```php
 composer require lutforrahman/nujhatcart
@@ -30,8 +30,8 @@ OR
 ```php
 
 "require": {
-	"laravel/framework": "5.3*",
-	"lutforrahman/nujhatcart": "5.3"
+	"laravel/framework": "5.4.*",
+	"lutforrahman/nujhatcart": "5.4"
 }
 
 ```
@@ -45,7 +45,7 @@ Now all you have to do is add the service provider of the package and alias the 
 
 Add a new line to the `service providers` array:
 
-	Lutforrahman\Nujhatcart\NujhatcartServiceProvider::class
+	Lutforrahman\Nujhatcart\ShoppingcartServiceProvider::class
 
 After that add a new line to the `aliases` array:
 
@@ -83,7 +83,11 @@ The shoppingcart gives you the following methods to use:
      */
  
 
-// Cart Insert
+// Basic form
+
+Cart::insert('101', '090-BRC', 'Product name', 'product-name', 'uploads/product-thumbnail.jpg', 1, 9.99, 0.00, 0.00, array('size' => 'large', 'color' => 'white'));
+
+// Array form
 
 $product = Product::find($id);
 $item = [

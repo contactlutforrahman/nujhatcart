@@ -14,10 +14,13 @@
 namespace Lutforrahman\Nujhatcart;
 
 use Illuminate\Contracts\Events\Dispatcher;
+use Illuminate\Session\SessionManager;
 use Illuminate\Support\Collection;
 
 class Cart
 {
+
+    const DEFAULT_INSTANCE = 'default';
 
     /**
      * Session class instance
@@ -60,12 +63,12 @@ class Cart
      * @param Illuminate\Session\SessionManager $session Session class instance
      * @param \Illuminate\Contracts\Events\Dispatcher $event Event class instance
      */
-    public function __construct($session, Dispatcher $event)
+    public function __construct(SessionManager $session, Dispatcher $event)
     {
         $this->session = $session;
         $this->event = $event;
 
-        $this->instance = 'main';
+        $this->instance(self::DEFAULT_INSTANCE);
     }
 
     /**
@@ -76,12 +79,20 @@ class Cart
      */
     public function instance($instance = null)
     {
-        if (empty($instance)) throw new NujhatcartInstanceException;
-
-        $this->instance = $instance;
-
-        // Return self so the method is chainable
+        $instance = $instance ?: self::DEFAULT_INSTANCE;
+        $this->instance = sprintf('%s.%s', 'cart', $instance);
         return $this;
+    }
+
+
+    /**
+     * Get the current cart instance.
+     *
+     * @return string
+     */
+    public function currentInstance()
+    {
+        return str_replace('cart.', '', $this->instance);
     }
 
     /**
@@ -96,7 +107,7 @@ class Cart
         $this->associatedModel = $modelName;
         $this->associatedModelNamespace = $modelNamespace;
 
-        if (!class_exists($modelNamespace . '\\' . $modelName)) throw new NujhatcartUnknownModelException;
+        if (!class_exists($modelNamespace . '\\' . $modelName)) throw new Exceptions\NujhatcartUnknownModelException;
 
         // Return self so the method is chainable
         return $this;
@@ -182,7 +193,7 @@ class Cart
      */
     public function update($itemId, $attribute)
     {
-        if (!$this->hasItemId($itemId)) throw new NujhatcartInvalidItemIDException;
+        if (!$this->hasItemId($itemId)) throw new Exceptions\NujhatcartInvalidItemIDException;
 
         if (is_array($attribute)) {
             // Fire the cart.update event
@@ -215,7 +226,7 @@ class Cart
      */
     public function remove($itemId)
     {
-        if (!$this->hasRowId($itemId)) throw new NujhatcartInvalidItemIDException;
+        if (!$this->hasRowId($itemId)) throw new Exceptions\NujhatcartInvalidItemIDException;
 
         $cart = $this->getContent();
 
@@ -315,23 +326,23 @@ class Cart
     protected function insertItem($id, $sku, $name, $slug, $image, $description, $quantity, $price, $discount, $tax, array $options = [])
     {
         if (empty($id) || empty($name) || empty($quantity) || !isset($price)) {
-            throw new NujhatcartInvalidItemException;
+            throw new Exceptions\NujhatcartInvalidItemException;
         }
 
         if (!is_numeric($quantity)) {
-            throw new NujhatcartInvalidQuantityException;
+            throw new Exceptions\NujhatcartInvalidQuantityException;
         }
 
         if (!is_numeric($price)) {
-            throw new NujhatcartInvalidPriceException;
+            throw new Exceptions\NujhatcartInvalidPriceException;
         }
 
         if (!is_numeric($discount)) {
-            throw new NujhatcartInvalidDiscountException;
+            throw new Exceptions\NujhatcartInvalidDiscountException;
         }
 
         if (!is_numeric($tax)) {
-            throw new NujhatcartInvalidTaxException;
+            throw new Exceptions\NujhatcartInvalidTaxException;
         }
 
         $cart = $this->getContent();
